@@ -4,15 +4,15 @@
 
 class Square:
     """Private instance attribute: size
-    Instantiation with area and position method"""
+    Instantiation with area and position method """
 
     def __init__(self, size=0, position=(0, 0)):
-        """Initialize attribute size"""
+        """Initializes attribute size """
         self.size = size
         self.position = position
 
     def area(self):
-        """Calculate are of square"""
+        """Calculate area of square"""
         return (self.__size * self.__size)
 
     @property
@@ -20,9 +20,23 @@ class Square:
         """Getter for square"""
         return self.__size
 
-    @size.getter
+    @size.setter
     def size(self, value):
-         """Initializes attribute position"""
+        """Initializes attribute size """
+        if (type(value) is not int):
+            raise TypeError("size must be an integer")
+        if value < 0:
+            raise ValueError("size must be >= 0")
+        self.__size = value
+
+    @property
+    def position(self):
+        """Getter for position"""
+        return self.__position
+
+    @position.setter
+    def position(self, value):
+        """Initializes attribute position"""
         if len(value) is not 2:
             raise TypeError("position must be a tuple of 2 positive integers")
         if (type(value[0]) is not int or value[0] < 0):
