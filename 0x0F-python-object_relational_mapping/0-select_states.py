@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
-import mysql.connector
+
+import MySQLdb
 from sys import argv
 
 '''
@@ -8,7 +9,7 @@ a script that lists all states
 from the database
 '''
 if __name__ == "__main__":
-    con = mysql.connector.connect(
+    con = MySQLdb.connect(
         host="localhost", port=3306, user=argv[1],
         password=argv[2], database=argv[3])
     cursor = con.cursor()
@@ -17,4 +18,4 @@ if __name__ == "__main__":
     for i in db:
         print(i)
     cursor.close()
-    con.close()
+    db.close()
